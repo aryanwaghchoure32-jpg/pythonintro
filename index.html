@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Programming - Complete Professional Introduction</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#7c3aed',
+                        dark: '#1e293b',
+                        light: '#f8fafc',
+                        accent: '#f97316'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 10px 20px rgba(37,99,235,0.15);
+            }
+            .code-block {
+                background-color: #1e293b;
+                color: #f8fafc;
+                border-radius: 0.5rem;
+                padding: 1.5rem;
+                overflow-x: auto;
+                font-family: 'JetBrains Mono', monospace;
+            }
+            .code-keyword { color: #c4b5fd; }
+            .code-string { color: #a7f3d0; }
+            .code-comment { color: #64748b; }
+            .code-function { color: #fcd34d; }
+            .code-variable { color: #f87171; }
+        }
+    </style>
+</head>
+<body class="bg-light text-dark min-h-screen">
+    <!-- Sticky Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i class="fa fa-python text-primary text-3xl"></i>
+                <h1 class="text-xl font-bold text-primary">Python Pro Intro</h1>
+            </div>
+            <nav class="hidden md:flex gap-6">
+                <a href="#intro" class="text-dark hover:text-primary transition-colors">Introduction</a>
+                <a href="#tokens" class="text-dark hover:text-primary transition-colors">Tokens</a>
+                <a href="#datatypes" class="text-dark hover:text-primary transition-colors">Data Types</a>
+                <a href="#operators" class="text-dark hover:text-primary transition-colors">Operators</a>
+                <a href="#control-flow" class="text-dark hover:text-primary transition-colors">Control Flow</a>
+                <a href="#get-started" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">Get Started</a>
+            </nav>
+            <button class="md:hidden text-primary text-xl" id="mobile-menu-btn">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white shadow-lg absolute w-full" id="mobile-menu">
+            <div class="container mx-auto px-4 py-2 flex flex-col gap-3">
+                <a href="#intro" class="py-2 hover:text-primary transition-colors">Introduction</a>
+                <a href="#tokens" class="py-2 hover:text-primary transition-colors">Tokens</a>
+                <a href="#datatypes" class="py-2 hover:text-primary transition-colors">Data Types</a>
+                <a href="#operators" class="py-2 hover:text-primary transition-colors">Operators</a>
+                <a href="#control-flow" class="py-2 hover:text-primary transition-colors">Control Flow</a>
+                <a href="#get-started" class="bg-primary text-white px-4 py-2 rounded-lg text-center">Get Started</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <!-- Introduction Section -->
+        <section id="intro" class="mb-12">
+            <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                <div class="flex items-center gap-3 mb-4">
+                    <i class="fa fa-info-circle text-primary text-2xl"></i>
+                    <h2 class="text-2xl font-bold text-primary">What is Python?</h2>
+                </div>
+                <p class="mb-4">Python is a high-level, interpreted, general-purpose programming language known for its simplicity, readability, and versatility. Created by Guido van Rossum and first released in 1991, Python has become one of the most popular programming languages worldwide.</p>
+                
+                <div class="grid md:grid-cols-3 gap-4 mt-6">
+                    <div class="bg-primary/10 rounded-lg p-4 flex flex-col items-center text-center">
+                        <i class="fa fa-code text-primary text-3xl mb-2"></i>
+                        <h3 class="font-semibold mb-1">Easy to Learn</h3>
+                        <p class="text-sm">Clean syntax reduces learning curve for beginners</p>
+                    </div>
+                    <div class="bg-secondary/10 rounded-lg p-4 flex flex-col items-center text-center">
+                        <i class="fa fa-rocket text-secondary text-3xl mb-2"></i>
+                        <h3 class="font-semibold mb-1">High Productivity</h3>
+                        <p class="text-sm">Rapid development with built-in libraries</p>
+                    </div>
+                    <div class="bg-accent/10 rounded-lg p-4 flex flex-col items-center text-center">
+                        <i class="fa fa-cubes text-accent text-3xl mb-2"></i>
+                        <h3 class="font-semibold mb-1">Versatile</h3>
+                        <p class="text-sm">Used for web dev, data science, ML, automation, and more</p>
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <h3 class="font-semibold mb-2">Hello World Example</h3>
+                    <div class="code-block">
+                        <span class="code-comment"># Basic Hello World Program</span><br>
+                        <span class="code-function">print</span>(<span class="code-string">"Hello, Python World!"</span>)<br><br>
+                        <span class="code-comment"># Variable declaration and usage</span><br>
+                        <span class="code-variable">name</span> = <span class="code-string">"Python Developer"</span><br>
+                        <span class="code-function">print</span>(<span class="code-string">"Welcome, "</span> + <span class="code-variable">name</span>)
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Python Tokens Section -->
+        <section id="tokens" class="mb-12">
+            <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                <div class="flex items-center gap-3 mb-4">
+                    <i class="fa fa-cogs text-primary text-2xl"></i>
+                    <h2 class="text-2xl font-bold text-primary">Python Tokens</h2>
+                </div>
+                <p class="mb-4">Tokens are the smallest individual units in a Python program. They include keywords, identifiers, literals, operators, and punctuation.</p>
+                
+                <div class="grid md:grid-cols-2 gap-6 mt-6">
+                    <div class="border border-gray-200 rounded-lg p-5">
+                        <h3 class="font-semibold text-primary mb-2">1. Keywords</h3>
+                        <p class="text-sm mb-2">Reserved words that cannot be used as identifiers</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-primary/10 px-2 py-1 rounded text-xs">if</span>
+                            <span class="bg-primary/10 px-2 py-1 rounded text-xs">else</span>
+                            <span class="bg-primary/10 px-2 py-1 rounded text-xs">for</span>
+                            <span class="bg-primary/10 px-2 py-1 rounded text-xs">while</span>
+                            <span class="bg-primary/10 px-2 py-1 rounded text-xs">def</span>
+                            <span class="bg-primary/10 px-2 py-1 rounded text-xs">class</span>
+                            <span class="bg-primary/10 px-2 py-1 rounded text-xs">import</span>
+                            <span class="bg-primary/10 px-2 py-1 rounded text-xs">return</span>
+                            <span class="bg-primary/10 px-2 py-1 rounded text-xs">True</span>
+                            <span class="bg-primary/10 px-2 py-1 rounded text-xs">False</span>
+                            <span class="bg-primary/10 px-2 py-1 rounded text-xs">None</span>
+                            <span class="bg-primary/10 px-2 py-1 rounded text-xs">import</span>
+                            <span class="bg-primary/10 px-2 py-1 rounded text-xs">pass</span>
+                            <span class="bg-primary/10 px-2 py-1 rounded text-xs">lambda</span>
+                            <span class="bg-primary/10 px-2 py-1 rounded text-xs">try</span>
+                            <span class="bg-primary/10 px-2 py-1 rounded text-xs">with</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg p-5">
+                        <h3 class="font-semibold text-primary mb-2">2. Identifiers</h3>
+                        <p class="text-sm mb-2">Names given to variables, functions, classes, etc.</p>
+                        <div class="code-block">
+                            <span class="code-comment"># Valid Identifiers</span><br>
+                            <span class="code-variable">my_variable</span> = 10<br>
+                            <span class="code-variable">UserProfile</span> = <span class="code-string">"Aryan"</span><br>
+                            <span class="code-variable">_private_var</span> = <span class="code-string">"secret"</span><br><br>
+                            <span class="code-comment"># Invalid Identifiers</span><br>
+                            <span class="code-comment"># 123var (starts with number)</span><br>
+                            <span class="code-comment"># var-name (contains hyphen)</span><br>
+                            <span class="code-comment"># class (keyword)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg p-5">
+                        <h3 class="font-semibold text-primary mb-2">3. Literals</h3>
+                        <p class="text-sm mb-2">Fixed values that appear in code</p>
+                        <div class="code-block">
+                            <span class="code-comment"># Numeric Literals</span><br>
+                            <span class="code-variable">integer</span> = 42<br>
+                            <span class="code-variable">float_num</span> = 3.14<br>
+                            <span class="code-variable">complex_num</span> = 2 + 3j<br><br>
+                            <span class="code-comment"># String Literals</span><br>
+                            <span class="code-variable">single_quote</span> = <span class="code-string">'Hello'</span><br>
+                            <span class="code-variable">double_quote</span> = <span class="code-string">"World"</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg p-5">
+                        <h3 class="font-semibold text-primary mb-2">4. Operators & Punctuation</h3>
+                        <p class="text-sm mb-2">Symbols that perform operations or structure code</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-secondary/10 px-2 py-1 rounded text-xs">+</span>
+                            <span class="bg-secondary/10 px-2 py-1 rounded text-xs">-</span>
+                            <span class="bg-secondary/10 px-2 py-1 rounded text-xs">*</span>
+                            <span class="bg-secondary/10 px-2 py-1 rounded text-xs">/</span>
+                            <span class="bg-secondary/10 px-2 py-1 rounded text-xs">==</span>
+                            <span class="bg-secondary/10 px-2 py-1 rounded text-xs">!=</span>
+                            <span class="bg-secondary/10 px-2 py-1 rounded text-xs">()</span>
+                            <span class="bg-secondary/10 px-2 py-1 rounded text-xs">[]</span>
+                            <span class="bg-secondary/10 px-2 py-1 rounded text-xs">{}</span>
+                            <span class="bg-secondary/10 px-2 py-1 rounded text-xs">:</span>
+                            <span class="bg-secondary/10 px-2 py-1 rounded text-xs">,</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Types Section -->
+        <section id="datatypes" class="mb-12">
+            <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                <div class="flex items-center gap-3 mb-4">
+                    <i class="fa fa-database text-primary text-2xl"></i>
+                    <h2 class="text-2xl font-bold text-primary">Python Data Types</h2>
+                </div>
+                <p class="mb-4">Python has built-in data types that define the kind of value a variable can hold. They are categorized into several groups:</p>
+                
+                <div class="grid md:grid-cols-3 gap-6 mt-6">
+                    <div class="border border-gray-200 rounded-lg p-5 card-hover">
+                        <h3 class="font-semibold text-primary mb-2">Numeric Types</h3>
+                        <ul class="text-sm space-y-1">
+                            <li><strong>int:</strong> Integer values (e.g., 10, -5, 0)</li>
+                            <li><strong>float:</strong> Floating-point numbers (e.g., 3.14, 2.5)</li>
+                            <li><strong>complex:</strong> Complex numbers (e.g., 2+3j, 5-2j)</li>
+                        </ul>
+                        <div class="code-block mt-3">
+                            <span class="code-variable">age</span> = 25<br>
+                            <span class="code-variable">pi</span> = 3.14159<br>
+                            <span class="code-variable">z</span> = 10 + 2j
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg p-5 card-hover">
+                        <h3 class="font-semibold text-primary mb-2">Sequence Types</h3>
+                        <ul class="text-sm space-y-1">
+                            <li><strong>str:</strong> String (text data, e.g., "Hello")</li>
+                            <li><strong>list:</strong> Ordered, mutable collection (e.g., [1,2,3])</li>
+                            <li><strong>tuple:</strong> Ordered, immutable collection (e.g., (1,2,3))</li>
+                        </ul>
+                        <div class="code-block mt-3">
+                            <span class="code-variable">name</span> = <span class="code-string">"Alice"</span><br>
+                            <span class="code-variable">fruits</span> = [<span class="code-string">"apple"</span>, <span class="code-string">"banana"</span>]<br>
+                            <span class="code-variable">coords</span> = (10.5, 20.3)
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg p-5 card-hover">
+                        <h3 class="font-semibold text-primary mb-2">Mapping & Set Types</h3>
+                        <ul class="text-sm space-y-1">
+                            <li><strong>dict:</strong> Key-value pairs (e.g., {"name": "Bob"})</li>
+                            <li><strong>set:</strong> Unordered, unique elements (e.g., {1,2,3})</li>
+                            <li><strong>frozenset:</strong> Immutable set (e.g., frozenset({1,2}))</li>
+                        </ul>
+                        <div class="code-block mt-3">
+                            <span class="code-variable">user</span> = {<span class="code-string">"name"</span>: <span class="code-string">"Bob"</span>, <span class="code-string">"age"</span>: 30}<br>
+                            <span class="code-variable">unique_numbers</span> = {1,2,3,3,4}
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg p-5 card-hover md:col-span-3">
+                        <h3 class="font-semibold text-primary mb-2">Other Types</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="font-medium text-secondary mb-1">Boolean</h4>
+                                <p class="text-sm">Represents truth values: <code class="bg-gray-100 px-1 rounded">True</code> or <code class="bg-gray-100 px-1 rounded">False</code></p>
+                                <div class="code-block mt-2">
+                                    <span class="code-variable">is_active</span> = <span class="code-keyword">True</span><br>
+                                    <span class="code-variable">is_verified</span> = <span class="code-keyword">False</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-secondary mb-1">None Type</h4>
+                                <p class="text-sm">Represents absence of value: <code class="bg-gray-100 px-1 rounded">None</code></p>
+                                <div class="code-block mt-2">
+                                    <span class="code-variable">result</span> = <span class="code-keyword">None</span><br>
+                                    <span class="code-function">print</span>(<span class="code-variable">result</span>) <span class="code-comment"># Output: None</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Operators Section -->
+        <section id="operators" class="mb-12">
+            <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                <div class="flex items-center gap-3 mb-4">
+                    <i class="fa fa-calculator text-primary text-2xl"></i>
+                    <h2 class="text-2xl font-bold text-primary">Python Operators</h2>
+                </div>
+                <p class="mb-4">Operators are symbols that perform operations on variables and values. Python supports several types of operators:</p>
+                
+                <!-- Tabs for Operators -->
+                <div class="border-b border-gray-200 mb-4">
+                    <div class="flex flex-wrap gap-2">
+                        <button class="operator-tab active px-4 py-2 text-primary border-b-2 border-primary font-medium" data-target="arithmetic">Arithmetic</button>
+                        <button class="operator-tab px-4 py-2 text-gray-500 hover:text-primary font-medium" data-target="comparison">Comparison</button>
+                        <button class="operator-tab px-4 py-2 text-gray-500 hover:text-primary font-medium" data-target="logical">Logical</button>
+                        <button class="operator-tab px-4 py-2 text-gray-500 hover:text-primary font-medium" data-target="assignment">Assignment</button>
+                        <button class="operator-tab px-4 py-2 text-gray-500 hover:text-primary font-medium" data-target="other">Other</button>
+                    </div>
+                </div>
+                
+                <!-- Operator Tab Content -->
+                <div class="operator-content active" id="arithmetic">
+                    <div class="overflow-x-auto">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-primary/10">
+                                    <th class="border border-gray-200 px-4 py-2 text-left">Operator</th>
+                                    <th class="border border-gray-200 px-4 py-2 text-left">Description</th>
+                                    <th class="border border-gray-200 px-4 py-2 text-left">Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-200 px-4 py-2">+</td>
+                                    <td class="border border-gray-200 px-4 py-2">Addition</td>
+                                    <td class="border border-gray-200 px-4 py-2">5 + 3 = 8</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-200 px-4 py-2">-</td>
+                                    <td class="border border-gray-200 px-4 py-2">Subtraction</td>
+                                    <td class="border border-gray-200 px-4 py-2">5 - 3 = 2</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-200 px-4 py-2">*</td>
+                                    <td class="border border-gray-200 px-4 py-2">Multiplication</td>
+                                    <td class="border border-gray-200 px-4 py-2">5 * 3 = 15</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-200 px-4 py-2">/</td>
+                                    <td class="border border-gray-200 px-4 py-2">Division</td>
+                                    <td class="border border-gray-200 px-4 py-2">5 / 3 = 1.666...</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-200 px-4 py-2">//</td>
+                                    <td class="border border-gray-200 px-4 py-2">Floor Division</td>
+                                    <td class="border border-gray-200 px-4 py-2">5 // 3 = 1</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-200 px-4 py-2">%</td>
+                                    <td class="border border-gray-200 px-4 py-2">Modulus</td>
+                                    <td class="border border-gray-200 px-4 py-2">5 % 3 = 2</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-200 px-4 py-2">**</td>
+                                    <td class="border border-gray-200 px-4 py-2">Exponentiation</td>
+                                    <td class="border border-gray-200 px-4 py-2">5 ** 3 = 125</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="operator-content hidden" id="comparison">
+                    <div class="overflow-x-auto">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-primary/10">
+                                    <th class="border border-gray-200 px-4 py-2 text-left">Operator</th>
+                                    <th class="border border-gray-200 px-4 py-2 text-left">Description</th>
+                                    <th class="border border-gray-200 px-4 py-2 text-left">Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-200 px-4 py-2">==</td>
+                                    <td class="border border-gray-200 px-4 py-2">Equal to</td>
+                                    <td class="border border-gray-200 px-4 py-2">5 == 3 → False</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-200 px-4 py-2">!=</td>
+                                    <td class="border border-gray-200 px-4 py-2">Not equal to</td>
+                                    <td class="border border-gray-200 px-4 py-2">5 !=3 → True</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-200 px-4 py-2">&gt;</td>
+                                    <td class="border border-gray-200 px-4 py-2">Greater than</td>
+                                    <td class="border border-gray-200 px-4 py-2">5 &gt;3 → True</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-200 px-4 py-2">&lt;</td>
+                                    <td class="border border-gray-200 px-4 py-2">Less than</td>
+                                    <td class="border border-gray-200 px-4 py-2">5 &lt;3 → False</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-200 px-4 py-2">&gt;=</td>
+                                    <td class="border border-gray-200 px-4 py-2">Greater than or equal to</td>
+                                    <td class="border border-gray-200 px-4 py-2">5 &gt;=3 → True</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-200 px-4 py-2">&lt;=</td>
+                                    <td class="border border-gray-200 px-4 py-2">Less than or equal to</td>
+                                    <td class="border border-gray-200 px-4 py-2">5 &lt;=3 → False</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="operator-content hidden" id="logical">
+                    <div class="overflow-x-auto">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-primary/10">
+                                    <th class="border border-gray-200 px-4 py-2 text-left">Operator</th>
+                                    <th class="border border-gray-200 px-4 py-2 text-left">Description</th>
+                                    <th class="border border-gray-200 px-4 py-2 text-left">Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-200 px-4 py-2">and</td>
+                                    <td class="border border-gray-200 px-4 py-2">Logical AND</td>
+                                    <td class="border border-gray-200 px-4 py-2">True and False → False</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-200 px-4 py-2">or</td>
+                                    <td class="border border-gray-200 px-4 py-2">Logical OR</td>
+                                    <td class="border border-gray-200 px-4 py-2">True or False → True</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-200 px-4 py-2">not</td>
+                                    <td class="border border-gray-200 px-4 py-2">Logical NOT</td>
+                                    <td class="border border-gray-200 px-4 py-2">not True → False</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="operator-content hidden" id="assignment">
+                    <div class="overflow-x-auto">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-primary/10">
+                                    <th class="border border-gray-200 px-4 py-2 text-left">Operator</th>
+                                    <th class="border border-gray-200 px-4 py-2 text-left">Description</th>
+                                    <th class="border border-gray-200 px-4 py-2 text-left">Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-200 px-4 py-2">=</td>
+                                    <td class="border border-gray-200 px-4 py-2">Assignment</td>
+                                    <td class="border border-gray-200 px-4 py-2">x = 5</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-200 px-4 py-2">+=</td>
+                                    <td class="border border-gray-200 px-4 py-2">Add and assign</td>
+                                    <td class="border border-gray-200 px-4 py-2">x +=3 → x=8</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-200 px-4 py-2">-=</td>
+                                    <td class="border border-gray-200 px-4 py-2">Subtract and assign</td>
+                                    <td class="border border-gray-200 px-4 py-2">x -=3 → x=2</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-200 px-4 py-2">*=</td>
+                                    <td class="border border-gray-200 px-4 py-2">Multiply and assign</td>
+                                    <td class="border border-gray-200 px-4 py-2">x *=3 → x=15</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-200 px-4 py-2">/=</td>
+                                    <td class="border border-gray-200 px-4 py-2">Divide and assign</td>
+                                    <td class="border border-gray-200 px-4 py-2">x /=3 → x=1.666...</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-200 px-4 py-2">//=</td>
+                                    <td class="border border-gray-200 px-4 py-2">Floor divide and assign</td>
+                                    <td class="border border-gray-200 px-4 py-2">x //=3 → x=1</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-200 px-4 py-2">%=</td>
+                                    <td class="border border-gray-200 px-4 py-2">Modulus and assign</td>
+                                    <td class="border border-gray-200 px-4 py-2">x %=3 → x=2</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-200 px-4 py-2">**=</td>
+                                    <td class="border border-gray-200 px-4 py-2">Exponent and assign</td>
+                                    <td class="border border-gray-200 px-4 py-2">x **=3 → x=125</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="operator-content hidden" id="other">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="font-semibold text-primary mb-2">Identity Operators</h3>
+                            <div class="overflow-x-auto">
+                                <table class="w-full border-collapse">
+                                    <thead>
+                                        <tr class="bg-primary/10">
+                                            <th class="border border-gray-200 px-4 py-2 text-left">Operator</th>
+                                            <th class="border border-gray-200 px-4 py-2 text-left">Description</th>
+                                            <th class="border border-gray-200 px-4 py-2 text-left">Example</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="border border-gray-200 px-4 py-2">is</td>
+                                            <td class="border border-gray-200 px-4 py-2">Check if same object</td>
+                                            <td class="border border-gray-200 px-4 py-2">x is y → True/False</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 px-4 py-2">is not</td>
+                                            <td class="border border-gray-200 px-4 py-2">Check if not same object</td>
+                                            <td class="border border-gray-200 px-4 py-2">x is not y → True/False</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-primary mb-2">Membership Operators</h3>
+                            <div class="overflow-x-auto">
+                                <table class="w-full border-collapse">
+                                    <thead>
+                                        <tr class="bg-primary/10">
+                                            <th class="border border-gray-200 px-4 py-2 text-left">Operator</th>
+                                            <th class="border border-gray-200 px-4 py-2 text-left">Description</th>
+                                            <th class="border border-gray-200 px-4 py-2 text-left">Example</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="border border-gray-200 px-4 py-2">in</td>
+                                            <td class="border border-gray-200 px-4 py-2">Check if element exists</td>
+                                            <td class="border border-gray-200 px-4 py-2">"a" in "apple" → True</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 px-4 py-2">not in</td>
+                                            <td class="border border-gray-200 px-4 py-2">Check if element doesn't exist</td>
+                                            <td class="border border-gray-200 px-4 py-2">"x" in "apple" → False</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Control Flow Section -->
+        <section id="control-flow" class="mb-12">
+            <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                <div class="flex items-center gap-3 mb-4">
+                    <i class="fa fa-sitemap text-primary text-2xl"></i>
+                    <h2 class="text-2xl font-bold text-primary">Control Flow Basics</h2>
+                </div>
+                <p class="mb-4">Control flow statements determine the order in which code is executed. Python supports conditional statements and loops:</p>
+                
+                <div class="grid md:grid-cols-2 gap-6 mt-6">
+                    <div class="border border-gray-200 rounded-lg p-5">
+                        <h3 class="font-semibold text-primary mb-2">Conditional Statements (if-elif-else)</h3>
+                        <p class="text-sm mb-3">Execute code based on conditions</p>
+                        <div class="code-block">
+                            <span class="code-variable">age</span> = 18<br><br>
+                            <span class="code-keyword">if</span> <span class="code-variable">age</span> &gt;= 18:<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span class="code-string">"You are an adult"</span>)<br>
+                            <span class="code-keyword">elif</span> <span class="code-variable">age</span> &gt;=13:<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span class="code-string">"You are a teenager"</span>)<br>
+                            <span class="code-keyword">else</span>:<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span class="code-string">"You are a child"</span>)
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg p-5">
+                        <h3 class="font-semibold text-primary mb-2">For Loop</h3>
+                        <p class="text-sm mb-3">Iterate over sequences (lists, strings, etc.)</p>
+                        <div class="code-block">
+                            <span class="code-variable">fruits</span> = [<span class="code-string">"apple"</span>, <span class="code-string">"banana"</span>, <span class="code-string">"cherry"</span>]<br><br>
+                            <span class="code-keyword">for</span> <span class="code-variable">fruit</span> <span class="code-keyword">in</span> <span class="code-variable">fruits</span>:<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span class="code-variable">fruit</span>)<br><br>
+                            <span class="code-comment"># Range loop</span><br>
+                            <span class="code-keyword">for</span> <span class="code-variable">i</span> <span class="code-keyword">in</span> <span class="code-function">range</span>(5):<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span class="code-variable">i</span>)
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg p-5 md:col-span-2">
+                        <h3 class="font-semibold text-primary mb-2">While Loop</h3>
+                        <p class="text-sm mb-3">Execute code repeatedly as long as a condition is true</p>
+                        <div class="code-block">
+                            <span class="code-variable">count</span> = 0<br><br>
+                            <span class="code-keyword">while</span> <span class="code-variable">count</span> &lt; 5:<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span class="code-variable">count</span>)<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-variable">count</span> += 1<br><br>
+                            <span class="code-comment"># Break and continue statements</span><br>
+                            <span class="code-keyword">for</span> <span class="code-variable">i</span> <span class="code-keyword">in</span> <span class="code-function">range</span>(10):<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">if</span> <span class="code-variable">i</span> == 5:<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">break</span> <span class="code-comment"># Exit loop</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">if</span> <span class="code-variable">i</span> %2 ==0:<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">continue</span> <span class="code-comment"># Skip iteration</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span class="code-variable">i</span>)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Get Started Section -->
+        <section id="get-started" class="mb-12">
+            <div class="bg-gradient-to-r from-primary to-secondary rounded-xl shadow-lg p-8 text-white">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div>
+                        <h2 class="text-2xl font-bold mb-2">Start Your Python Journey Today!</h2>
+                        <p class="mb-4">Follow these steps to begin coding in Python:</p>
+                        <ol class="list-decimal list-inside space-y-1 mb-6">
+                            <li>Download Python from <a href="https://www.python.org" target="_blank" class="underline hover:text-accent">python.org</a></li>
+                            <li>Install a code editor (VS Code, PyCharm, or Jupyter Notebook)</li>
+                            <li>Learn basic syntax and practice with small projects</li>
+                            <li>Join the Python community for support and resources</li>
+                        </ol>
+                    </div>
+                    <a href="https://www.python.org/downloads/" target="_blank" class="bg-white text-primary font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors">
+                        <i class="fa fa-download mr-2"></i> Download Python
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-2">
+                    <i class="fa fa-python text-primary text-3xl"></i>
+                    <h3 class="text-xl font-bold">Python Pro Intro</h3>
+                </div>
+                <div class="flex gap-4">
+                    <a href="#intro" class="hover:text-primary transition-colors">Introduction</a>
+                    <a href="#tokens" class="hover:text-primary transition-colors">Tokens</a>
+                    <a href="#datatypes" class="hover:text-primary transition-colors">Data Types</a>
+                    <a href="#operators" class="hover:text-primary transition-colors">Operators</a>
+                </div>
+                <div class="text-sm text-gray-400">
+                    &copy; 2026 Python Pro Intro | All Rights Reserved
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Interactive Elements -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Operator Tabs
+        const operatorTabs = document.querySelectorAll('.operator-tab');
+        const operatorContents = document.querySelectorAll('.operator-content');
+        
+        operatorTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                operatorTabs.forEach(t => t.classList.remove('active', 'text-primary', 'border-primary'));
+                operatorTabs.forEach(t => t.classList.add('text-gray-500'));
+                operatorContents.forEach(c => c.classList.add('hidden'));
+                
+                // Add active class to current tab and content
+                tab.classList.add('active', 'text-primary', 'border-primary');
+                tab.classList.remove('text-gray-500');
+                const target = tab.getAttribute('data-target');
+                document.getElementById(target).classList.remove('hidden');
+            });
+        });
+        
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
