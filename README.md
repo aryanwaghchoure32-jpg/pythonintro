@@ -1,1 +1,1 @@
-this is basic python programming website
+This is basic python programming website
